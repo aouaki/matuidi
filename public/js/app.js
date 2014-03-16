@@ -1,4 +1,4 @@
-angular.module('footbarGame')
+angular.module('footbarGame', [])
   .controller('GameDetailCtrl', function ($scope, $http) {
     $scope.tweetReq = 0;
     $scope.error = 0;
