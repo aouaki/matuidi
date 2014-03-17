@@ -20,7 +20,7 @@ app.configure(function() {
     app.engine('html', require('ejs').renderFile);
 });
 
-server.listen(PORT, "localhost",  function(){
+server.listen(PORT, function(){
   console.log("Express server up and running.");
 });
 
