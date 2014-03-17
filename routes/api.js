@@ -15,7 +15,6 @@ else {
 }
 
 var Twit = require('twit'),
-config = require('../config'),
 T = new Twit(config);
 
 exports.tweets = function(req, res) {
