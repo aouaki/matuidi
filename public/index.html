@@ -24,7 +24,8 @@
                 <div ng-show="loading">
                     Now loading
                 </div>
-                <li ng-repeat="trend in trends">{{trend.text}}</li>
+                <li ng-repeat="trend in trends"> <b> {{ trend.text }} </b> par <b> {{ trend.user.name }} </b> </li>
+                {{ trends }}
             </div>
         </div>
     </body>
