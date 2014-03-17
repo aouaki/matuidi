@@ -1,6 +1,8 @@
 /*
 Setup Express server
 */
+
+var PORT = process.env.PORT || 8080
 var express = require('express'),
 app = module.exports = express(),
 server = require('http').createServer(app),
@@ -18,7 +20,7 @@ app.configure(function() {
     app.engine('html', require('ejs').renderFile);
 });
 
-server.listen(5000, "localhost",  function(){
+server.listen(PORT, "localhost",  function(){
   console.log("Express server up and running.");
 });
 
