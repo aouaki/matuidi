@@ -6,7 +6,7 @@ if (test==0){
     var config = require('../config');
 }
 else {
-    module.exports = {
+    var config = module.exports = {
         consumer_key: process.env.CONSUMER,
         consumer_secret: process.env.CONSUMER_SECRET,
         access_token: process.env.ACCESS,
