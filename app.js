@@ -25,4 +25,4 @@ server.listen(PORT, function(){
 });
 
 app.get('/', routes.index);
-app.get('/api/tweets/:tweetReq', routes.api.tweets);
+app.get('/api/tweets/:tweetReq', routes.tweets);
