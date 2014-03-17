@@ -18,7 +18,7 @@ app.configure(function() {
     app.engine('html', require('ejs').renderFile);
 });
 
-server.listen(8000, "localhost",  function(){
+server.listen(5000, "localhost",  function(){
   console.log("Express server up and running.");
 });
 
