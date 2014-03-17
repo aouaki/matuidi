@@ -2,7 +2,7 @@
 Setup Express server
 */
 
-var PORT = process.env.PORT || 8080
+var PORT = Number(process.env.PORT || 8080)
 var express = require('express'),
 app = module.exports = express(),
 server = require('http').createServer(app),
