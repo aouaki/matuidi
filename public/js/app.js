@@ -1,5 +1,6 @@
 angular.module('footbarGame', [])
 .controller('GameDetailCtrl', function ($scope, $http) {
+    var months = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
     $scope.game = 'PSGASSE';
 
     $scope.getTrends = function() {
@@ -13,6 +14,8 @@ angular.module('footbarGame', [])
                 if (temp != undefined) {
                     trends[trend] = temp;
                 }
+                date = new Date(trends[trend].created_at);
+                trends[trend].smallDate= date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " à " + date.getHours() + ":" + date.getMinutes();
             }
             $scope.trends = trends;
         })
@@ -22,13 +25,13 @@ angular.module('footbarGame', [])
         });
     }
 
-    $scope.noAmp= function (trend) {
-        console.log(trend.text);
+    $scope.noAmp = function (trend) {
         text = trend.text;
         text = text.replace('&amp;', '&');
         trend.text = text;
         return trend;
     }
+
 })
 
 

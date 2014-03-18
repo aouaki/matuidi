@@ -24,7 +24,7 @@
                 <div ng-show="loading">
                     Now loading
                 </div>
-                <li ng-repeat="trend in trends | unique : 'id' | filter:noAmp "> <i> {{ trend.text }} </i> par <b> {{ trend.user.name }}</b>. <span ng-show="trend.retweet_count">Retweeté <b> {{ trend.retweet_count }} </b> fois. </span> </li>
+                <li ng-repeat="trend in trends | unique : 'id' | filter : noAmp "> <i> {{ trend.text }} </i> par <b> {{ trend.user.name }}</b> le {{ trend.smallDate }}. <span ng-show="trend.retweet_count">Retweeté <b> {{ trend.retweet_count }} </b> fois. </span> </li>
             </div>
         </div>
     </body>
