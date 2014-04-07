@@ -1,6 +1,7 @@
 /*
    Twitter API integration
-   */
+*/
+
 var test = Number(process.env.PORT | 0);
 if (test==0) {
     var config = require('../config');
@@ -19,7 +20,7 @@ var Twit = require('twit'),
 
 exports.tweets = function(req, res) {
     var tweetReq = req.params.tweetReq;
-    T.get('search/tweets', {q: '%23' + tweetReq + ' since:2014-02-14', count: 100}, function(err, data) {
+    T.get('search/tweets', {q: '%23' + tweetReq + ' since:2014-02-14', geocode:['46.6', '1.88', '550km'], count: 100}, function(err, data) {
         if (typeof data === "undefined") {
             res.json({status: false});
         } else {
