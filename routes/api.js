@@ -19,8 +19,9 @@ var Twit = require('twit'),
     T = new Twit(config);
 
 exports.tweets = function(req, res) {
-    var tweetReq = req.params.tweetReq;
-    T.get('search/tweets', {q: '%23' + tweetReq + ' since:2014-02-14', geocode:['46.6', '1.88', '550km'], count: 100}, function(err, data) {
+    var hashtag = req.params.hashtag;
+    var tweetNb = req.params.tweetNb;
+    T.get('search/tweets', {q: '%23' + hashtag + ' since:2013-08-01', geocode:['46.6', '1.88', '550km'], count: tweetNb}, function(err, data) {
         if (typeof data === "undefined") {
             res.json({status: false});
         } else {

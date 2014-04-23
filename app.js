@@ -40,6 +40,6 @@ server.listen(PORT, function(){
 });
 
 app.get('/', routes.index);
-app.get('/api/tweets/:tweetReq', api.tweets);
+app.get('/api/tweets/:hashtag/:tweetNb', api.tweets);
 
 
