@@ -28,8 +28,6 @@ app.locals.pretty = true;
 app.use(express.static(__dirname + '/public'));
 app.use('/components', express.static(__dirname + '/components'));
 app.use('/js', express.static(__dirname + '/js'));
-app.use(app.router);
-app.engine('html', require('ejs').renderFile);
 
 server.listen(PORT, function(){
   console.log("Express server up and running.");
@@ -38,4 +36,4 @@ server.listen(PORT, function(){
 app.get('/', routes.index);
 app.get('/api/tweets/:hashtag/:tweetNb', api.tweets);
 
-
+app.engine('html', require('ejs').renderFile);
