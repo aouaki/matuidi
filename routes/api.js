@@ -29,3 +29,15 @@ exports.tweets = function(req, res) {
         }
     });
 };
+
+exports.someTweets = function(req, res) {
+    var hashtag = req.params.hashtag;
+    var tweetNb = req.params.tweetNb;
+    T.get('search/tweets', {q: '%23' + hashtag + ' since:2013-08-01', geocode:['46.6', '1.88', '550km'], count: tweetNb, max_id=id}, function(err, data) {
+        if (typeof data === "undefined") {
+            res.json({status: false});
+        } else {
+            res.json({tweets: data, status: true});
+        }
+    });
+};
