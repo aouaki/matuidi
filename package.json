@@ -4,16 +4,14 @@
   "description": "Lookup Twitter trends based on locations",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_PATH=./app/controllers NODE_ENV=development ./node_modules/.bin/nodemon app.js"
   },
   "dependencies": {
     "twit": "latest",
     "express": "latest",
     "nodemon": "latest",
-    "ejs": "latest"
-  },
-  "scripts": {
-    "start": "NODE_PATH=./app/controllers NODE_ENV=development ./node_modules/.bin/nodemon app.js"
+    "ejs": "latest",
+    "socket.io": "~0.9.16"
   },
   "author": "Tamas Piros",
   "license": "free",

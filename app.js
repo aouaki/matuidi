@@ -7,7 +7,9 @@ var express = require('express'),
 app = module.exports = express(),
 server = require('http').createServer(app),
 routes = require('./routes'),
-api = require('./routes/api');
+api = require('./routes/api'),
+io = require('socket.io').listen(server),
+vote = require('./routes/vote');
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -34,7 +36,24 @@ server.listen(PORT, function(){
 });
 
 app.get('/', routes.index);
+app.get('/vote', vote.vote);
 app.get('/api/tweets/:hashtag/:tweetNb', api.tweets);
 app.get('/api/tweets/:hashtag/:tweetNb/:tweetId', api.someTweets);
 
 app.engine('html', require('ejs').renderFile);
+
+var votes = [ 
+{ choice: 1, label: 'Paris Saint Germain', votes: 0 },
+{ choice: 2, label: 'Olympique de Marseille', votes: 0 },
+{ choice: 3, label: 'SO Chambéry', votes: 0 },
+{ choice: 4, label: 'Monaco FC', votes: 0 }
+];
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('votes', { votes: votes });
+    socket.on('vote', function(msg){
+        console.log(msg);
+        votes[msg.vote-1].votes++;
+        io.sockets.emit('votes', { votes: votes });
+    })
+});
