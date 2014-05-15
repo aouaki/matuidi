@@ -26,10 +26,10 @@ var allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 app.locals.pretty = true;
-app.use(express.static(__dirname + '../public'));
+app.use(express.static(__dirname + '/public'));
 app.use('/components', express.static(__dirname + '/components'));
 app.use('/js', express.static(__dirname + '/js'));
-app.set('views', __dirname + '/public');
+app.set('views', __dirname + '../public');
 
 
 server.listen(PORT, function(){
