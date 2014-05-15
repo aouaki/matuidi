@@ -1,0 +1,48 @@
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Web services</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <style type="text/css">
+         .vote {
+            font-size: 2em; 
+            font-weight: bold;
+            text-align: center;
+         }
+        </style>
+    </head>
+
+    <body class="container" ng-app ng-controller="VoteCtrl" ng-cloak>
+
+        <h1 class="vote">Votes</h1>
+        <br/>
+        <div class="row" ng-repeat="vote in votes">
+            <div class="col-xs-4 vote"> {{ vote.label }} </div>
+            <div class="col-xs-4 vote"> {{ vote.votes }} </div> 
+            <div class="btn btn-primary col-xs-4" ng-click="voteFor(vote.choice)">+1</div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+
+            function VoteCtrl($scope){
+                var host = location.origin;
+                var socket = io.connect(host);
+
+                $scope.votes = [];
+
+                $scope.voteFor = function(choice){
+                    socket.emit('vote', {vote : choice })
+                }
+
+                socket.on('votes', function(msg){
+                    $scope.votes = msg.votes;
+                    $scope.$apply();
+                });
+            }
+        </script>
+    </body>
+</html>
