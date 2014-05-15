@@ -1,5 +1,5 @@
 {
-    "name":  "Twitter GeoTrend",
+    "name":  "Twitter Footbar Server",
     "version": "0.0.1",
     "dependencies": {
         "bootstrap": "latest",

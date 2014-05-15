@@ -1,5 +1,5 @@
 {
-  "name": "GeoTrend",
+  "name": "TwitterFootbar",
   "version": "0.0.0",
   "description": "Lookup Twitter trends based on locations",
   "main": "app.js",

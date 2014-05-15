@@ -8,8 +8,7 @@ app = module.exports = express(),
 server = require('http').createServer(app),
 routes = require('./routes'),
 api = require('./routes/api'),
-io = require('socket.io').listen(server),
-vote = require('./routes/vote');
+io = require('socket.io').listen(server);
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -30,13 +29,15 @@ app.locals.pretty = true;
 app.use(express.static(__dirname + '/public'));
 app.use('/components', express.static(__dirname + '/components'));
 app.use('/js', express.static(__dirname + '/js'));
+app.set('views', __dirname + '/public');
+
 
 server.listen(PORT, function(){
   console.log("Express server up and running.");
 });
 
 app.get('/', routes.index);
-app.get('/vote', vote.vote);
+app.get('/vote', routes.vote);
 app.get('/api/tweets/:hashtag/:tweetNb', api.tweets);
 app.get('/api/tweets/:hashtag/:tweetNb/:tweetId', api.someTweets);
 
