@@ -35,6 +35,6 @@ server.listen(PORT, function(){
 
 app.get('/', routes.index);
 app.get('/api/tweets/:hashtag/:tweetNb', api.tweets);
-app.get('/api/tweets/:hashtag/:tweetNb/:tweetId', api.someTweets);
+app.get('/api/tweets/:hashtag/:tweetNb/:id', api.someTweets);
 
 app.engine('html', require('ejs').renderFile);

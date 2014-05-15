@@ -33,8 +33,8 @@ exports.tweets = function(req, res) {
 exports.someTweets = function(req, res) {
     var hashtag = req.params.hashtag;
     var tweetNb = req.params.tweetNb;
-    var tweetId = req.params.tweetId;
-    T.get('search/tweets', {q: '%23' + hashtag + ' since:2013-08-01', geocode:['46.6', '1.88', '550km'], count: tweetNb, max_id:tweetId}, function(err, data) {
+    var id = req.params.id;
+    T.get('search/tweets', {q: '%23' + hashtag + ' since:2013-08-01', geocode:['46.6', '1.88', '550km'], count: tweetNb, max_id:id}, function(err, data) {
         if (typeof data === "undefined") {
             res.json({status: false});
         } else {
