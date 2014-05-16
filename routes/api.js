@@ -44,7 +44,6 @@ exports.someTweets = function(req, res) {
 };
 
 exports.goalTweets = function(req, res) {
-    var tweetNb = req.params.tweetNb;
     T.get('statuses/user_timeline', {screen_name:'LiveActusLigue1', count: 100, include_rts: false, exclude_replies: true}, function(err, data) {
         if (typeof data === "undefined") {
             res.json({status: false});

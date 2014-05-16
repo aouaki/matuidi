@@ -40,7 +40,7 @@ app.get('/', routes.index);
 app.get('/vote', routes.vote);
 app.get('/api/tweets/:hashtag/:tweetNb', api.tweets);
 app.get('/api/tweets/:hashtag/:tweetNb/:tweetId', api.someTweets);
-app.get('/api/goaltweets/:tweetNb', api.goalTweets);
+app.get('/api/goaltweets', api.goalTweets);
 
 app.engine('html', require('ejs').renderFile);
 
