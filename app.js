@@ -46,26 +46,26 @@ app.get('/api/goaltweets', api.goalTweets);
 app.engine('html', require('ejs').renderFile);
 
 var votes = [ 
-{ choice: 1, label: 'PSG', votes: 0 },
-{ choice: 2, label: 'ACA', votes: 0 },
-{ choice: 3, label: 'MHSC', votes: 0 },
-{ choice: 4, label: 'FCGB', votes: 0 },
-{ choice: 5, label: 'EAG', votes: 0 },
-{ choice: 6, label: 'FCSM', votes: 0 },
-{ choice: 7, label: 'ETG', votes: 0 },
-{ choice: 8, label: 'TFC', votes: 0 },
-{ choice: 9, label: 'VAFC', votes: 0 },
-{ choice: 10, label: 'ASM', votes: 0 },
-{ choice: 11, label: 'OL', votes: 0 },
-{ choice: 12, label: 'FCN', votes: 0 },
-{ choice: 13, label: 'LOSC', votes: 0 },
-{ choice: 14, label: 'SRFC', votes: 0 },
-{ choice: 15, label: 'OM', votes: 0 },
-{ choice: 16, label: 'OGCN', votes: 0 },
-{ choice: 17, label: 'ASSE', votes: 0 },
-{ choice: 18, label: 'FCL', votes: 0 },
-{ choice: 19, label: 'SCB', votes: 0 },
-{ choice: 20, label: 'SR', votes: 0 }
+{ choice: 1, label: 'PSG', votes: 1 },
+{ choice: 2, label: 'ACA', votes: 1 },
+{ choice: 3, label: 'MHSC', votes: 1 },
+{ choice: 4, label: 'FCGB', votes: 1 },
+{ choice: 5, label: 'EAG', votes: 1 },
+{ choice: 6, label: 'FCSM', votes: 1 },
+{ choice: 7, label: 'ETG', votes: 1 },
+{ choice: 8, label: 'TFC', votes: 1 },
+{ choice: 9, label: 'VAFC', votes: 1 },
+{ choice: 10, label: 'ASM', votes: 1 },
+{ choice: 11, label: 'OL', votes: 1 },
+{ choice: 12, label: 'FCN', votes: 1 },
+{ choice: 13, label: 'LOSC', votes: 1 },
+{ choice: 14, label: 'SRFC', votes: 1 },
+{ choice: 15, label: 'OM', votes: 1 },
+{ choice: 16, label: 'OGCN', votes: 1 },
+{ choice: 17, label: 'ASSE', votes: 1 },
+{ choice: 18, label: 'FCL', votes: 1 },
+{ choice: 19, label: 'SCB', votes: 1 },
+{ choice: 20, label: 'SR', votes: 1 }
 ];
 io.sockets.on('connection', function (socket) {
     socket.emit('votes', { votes: votes });
