@@ -43,6 +43,21 @@ exports.someTweets = function(req, res) {
     });
 };
 
+exports.reloadTweets = function(req, res) {
+    var hashtag = req.params.hashtag;
+    var tweetNb = req.params.tweetNb;
+    var tweetId = req.params.tweetId;
+    T.get('search/tweets', {q: '%23' + hashtag + ' since:2013-08-01', geocode:['46.6', '1.88', '550km'], count: tweetNb, since_id:tweetId}, function(err, data) {
+        if (typeof data === "undefined") {
+            res.json({status: false});
+        } else {
+            res.json({tweets: data, status: true});
+        }
+    });
+};
+
+
+
 exports.goalTweets = function(req, res) {
     T.get('statuses/user_timeline', {screen_name:'LiveActusLigue1', count: 100, include_rts: false, exclude_replies: true}, function(err, data) {
         if (typeof data === "undefined") {

@@ -38,8 +38,9 @@ server.listen(PORT, function(){
 
 app.get('/', routes.index);
 app.get('/vote', routes.vote);
-app.get('/api/tweets/:hashtag/:tweetNb', api.tweets);
-app.get('/api/tweets/:hashtag/:tweetNb/:tweetId', api.someTweets);
+app.get('/api/tweets/all/:hashtag/:tweetNb', api.tweets);
+app.get('/api/tweets/older/:hashtag/:tweetNb/:tweetId', api.someTweets);
+app.get('/api/tweets/newer/:hashtag/:tweetNb/:tweetId', api.reloadTweets);
 app.get('/api/goaltweets', api.goalTweets);
 
 app.engine('html', require('ejs').renderFile);
@@ -66,7 +67,6 @@ var votes = [
 { choice: 19, label: 'SCB', votes: 0 },
 { choice: 20, label: 'SR', votes: 0 }
 ];
-
 io.sockets.on('connection', function (socket) {
     socket.emit('votes', { votes: votes });
     socket.on('vote', function(msg){
